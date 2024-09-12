@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Shows borders, for debugging purposes */
+/*
+* {
+    border: 2px dotted red;
+}
+*/
