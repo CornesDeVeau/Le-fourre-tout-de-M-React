@@ -1,27 +1,27 @@
-import type { Metadata } from "next";
+'use client'
+
 import "@/app/ui/globals.css";
 import { Sidebar } from "@/app/ui/sidebar/sidebar";
-
-export const metadata: Metadata = {
-  title: "Le fourre tout de M. React",
-  description: "Compilation de projets React",
-};
+import { useState } from "react";
+import clsx from "clsx";
 
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const [isCollapsed, setIsCollapsed] = useState(false);
+
+  function handleCollapseButton (collapse: boolean) {
+    setIsCollapsed(collapse);
+  }
+
   return (
     <html lang="fr">
       <body className="bg-gray-600">
-        <div className="flex flex-row">
-          <div className="w-[400px] min-w-[400px]">
-            <Sidebar />
-          </div>
-          <div className="h-[1000px] m-3">
-            {children}
-          </div>
+        <div className={clsx('grid', {"grid-cols-sidebar": !isCollapsed}, {'grid-cols-sidebar-collapsed': isCollapsed})}>
+          <Sidebar isOpen={isCollapsed} toggleCollapse={handleCollapseButton}/>
+          {children}
         </div>
       </body>
     </html>

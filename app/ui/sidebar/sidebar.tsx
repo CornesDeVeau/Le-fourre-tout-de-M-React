@@ -1,28 +1,38 @@
 'use client'
 
+import clsx from "clsx";
 import Link from "next/link";
+import { HomeIcon, ClipboardDocumentCheckIcon, XCircleIcon } from "@heroicons/react/24/outline";
 
 const links = [
-    {name: 'Page d\'accueil', href: '/'},
-    {name: 'TODO', href: '/TODO'},
-    {name: 'Tic Tac Toe', href: '/tic-tac-toe'}
+    {name: 'Page d\'accueil', icon: HomeIcon, href: '/'},
+    {name: 'TODO', icon: ClipboardDocumentCheckIcon, href: '/TODO'},
+    {name: 'Tic Tac Toe', icon: XCircleIcon, href: '/tic-tac-toe'},
 ];
 
-export function Sidebar() {
+export function Sidebar({isOpen, toggleCollapse}: {isOpen: boolean, toggleCollapse: (boolean) => void}) {
+    console.log("isOpen : ", isOpen);
     return (
-        <div className="flex flex-col w-[90%] h-1/2 border-8 border-gray-800 rounded-2xl bg-lime-200 overflow:scroll m-2">
-            <h1 className="text-6xl font-bold m-2">Naviguer</h1>
-            {links.map((link) => {
-                return (
-                    <Link
-                        key={link.name}
-                        href={link.href}
-                        className='flex my-1 mx-3 rounded-2xl bg-sky-200 p-3 hover:bg-sky-400 overflow-hidden w-[90%] h-[10%]'
-                        >
-                        <p className="font-bold text-xl text-nowrap">{link.name}</p>
-                    </Link>
-                );
-            })}
+        <div className={clsx(
+            "flex flex-col justify-between bg-lime-200 border-r-8 border-b-8 border-gray-800 rounded-2xl",
+            "md:w-full md:sticky md:z-0 top-0 z-20 fixed md:h-[80vh] h-full w-[300px]",
+            "transition-transform .3s ease-in-out md:translate-x-[-10px] md:translate-y-[-10px]",
+            {'-translate-x-3/4': !isOpen}
+            )}>
+            <nav className="md:sticky top-0 text-right">
+                <button className=" text-2xl text-nowrap font-bold m-4" onClick={() => toggleCollapse(!isOpen)}>{isOpen ? "|||" : "Cachez-moi"}</button>
+                <ul className="py-2 flex flex-col gap-2 text-right">
+                    {links.map((link) => {
+                        return (
+                            <li key={link.name} className='flex m-1 rounded-2xl bg-sky-200 hover:bg-sky-400 overflow-hidden w-[90%] h-[15%]'>
+                                <Link href={link.href} className="w-full">
+                                    <p className="font-bold text-xl text-nowrap pr-3">{ isOpen ? <link.icon className="w-6 h-6 -translate-x-[-15px]"/> : link.name}</p>
+                                </Link>
+                            </li>
+                        );
+                    })}
+                </ul>
+            </nav>
         </div>
     );
 }
