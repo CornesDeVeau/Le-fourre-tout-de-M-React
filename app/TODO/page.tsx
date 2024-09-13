@@ -5,7 +5,7 @@ export default function Sidebar() {
                 <h1 className="text-6xl font-bold"><u>TODO</u> 🛠️</h1>
                 <div className="ml-5 mt-5">
                     <ul className="text-lg list-disc">
-                        <li>Améliorer l&apos;aspect visuel du menu <i>Naviguer</i>.</li>
+                        <li>Améliorer l&apos;aspect visuel du menu <i>Naviguer</i> : ✅</li>
                     </ul>
                 </div>
             </div>
