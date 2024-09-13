@@ -10,7 +10,7 @@ const links = [
     {name: 'Tic Tac Toe', icon: XCircleIcon, href: '/tic-tac-toe'},
 ];
 
-export function Sidebar({isOpen, toggleCollapse}: {isOpen: boolean, toggleCollapse: (boolean) => void}) {
+export function Sidebar({isOpen, toggleCollapse}: {isOpen: boolean, toggleCollapse: (collapse: boolean) => void}) {
     console.log("isOpen : ", isOpen);
     return (
         <div className={clsx(
