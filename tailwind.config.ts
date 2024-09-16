@@ -8,10 +8,6 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
-      },
       gridTemplateColumns: {
         sidebar: "300px auto", //for sidebar layout
         "sidebar-collapsed": "64px auto", //for collapsed sidebar layout
