@@ -11,7 +11,7 @@ export default function ImageCaroussel({ imgsData }: { imgsData: string }) {
 
   return (
     <div className="bg-black">
-      <div className="grid grid-rows-1 grid-cols-10 items-center max-h-[80%]">
+      <div className="grid grid-rows-1 grid-cols-10 items-center max-h-[75%]">
         <button
           onClick={() =>
             actualImage <= 0
@@ -40,42 +40,29 @@ export default function ImageCaroussel({ imgsData }: { imgsData: string }) {
           <ChevronRightIcon className="text-gray-300 scale-50" />
         </button>
       </div>
-      <div className="overflow-hidden">
-        <ul className="flex flex-row gap-x-4 w-[500%] mt-10 mb-2 max-h-[20%]">
-          {data.imgs.map(
-            (
-              img: { path: string; x: number; y: number; alt: string },
-              index: number
-            ) => {
-              return (
-                <li key={img.path}>
-                  <Image
-                    src={img.path}
-                    width={img.x}
-                    height={img.y}
-                    alt={img.alt}
-                    style={
-                      {
-                        "--image-offset":
-                          (actualImage * window.screenX * 1.4).toString() +
-                          "px",
-                      } as React.CSSProperties
-                    }
-                    className={clsx(
-                      "scale-75 -translate-x-[var(--image-offset)]",
-                      {
-                        "border-2 border-gray-300 scale-100":
-                          index === actualImage,
-                      }
-                    )}
-                    onClick={() => setActualImage(index)}
-                  ></Image>
-                </li>
-              );
-            }
-          )}
-        </ul>
-      </div>
+      <ul className="grid overflow-hidden grid-cols-5 w-full mt-10 mb-2 max-h-[25%]">
+        {data.imgs.map(
+          (
+            img: { path: string; x: number; y: number; alt: string },
+            index: number
+          ) => {
+            return (
+              <li key={img.path}>
+                <Image
+                  src={img.path}
+                  width={img.x}
+                  height={img.y}
+                  alt={img.alt}
+                  className={clsx("scale-75", {
+                    "border-2 border-gray-300 scale-90": index === actualImage,
+                  })}
+                  onClick={() => setActualImage(index)}
+                ></Image>
+              </li>
+            );
+          }
+        )}
+      </ul>
     </div>
   );
 }
