@@ -6,13 +6,16 @@ import {
   HomeIcon,
   ClipboardDocumentCheckIcon,
   XCircleIcon,
+  PhotoIcon,
+  ClockIcon,
 } from "@heroicons/react/24/outline";
 
 const links = [
   { name: "Page d'accueil", icon: HomeIcon, href: "/" },
+  { name: "Depuis quand ?", icon: ClockIcon, href: "/since-when" },
   { name: "TODO", icon: ClipboardDocumentCheckIcon, href: "/TODO" },
   { name: "Tic Tac Toe", icon: XCircleIcon, href: "/tic-tac-toe" },
-  { name: "Caroussel", icon: XCircleIcon, href: "/image-caroussel" },
+  { name: "Caroussel", icon: PhotoIcon, href: "/image-caroussel" },
 ];
 
 export function Sidebar({
@@ -22,7 +25,6 @@ export function Sidebar({
   isOpen: boolean;
   toggleCollapse: (collapse: boolean) => void;
 }) {
-  console.log("isOpen : ", isOpen);
   return (
     <div
       className={clsx(
