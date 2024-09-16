@@ -25,16 +25,16 @@ export function Sidebar({
   isOpen: boolean;
   toggleCollapse: (collapse: boolean) => void;
 }) {
+  console.log(isOpen);
   return (
     <div
       className={clsx(
         "flex flex-col justify-between bg-lime-200 border-r-8 border-b-8 border-gray-800 rounded-2xl",
-        "md:w-full md:sticky md:z-0 top-0 z-20 fixed md:h-[80vh] h-full w-[300px]",
-        "transition-transform .3s ease-in-out md:translate-x-[-10px] md:translate-y-[-10px]",
-        { "-translate-x-3/4": !isOpen }
+        "md:w-full md:z-0 top-0 z-20 md:h-[80vh] h-full",
+        { "w-[300px]": !isOpen }
       )}
     >
-      <nav className="md:sticky top-0 text-right">
+      <nav className="md:sticky top-0 text-left">
         <button
           className=" text-2xl text-nowrap font-bold m-4"
           onClick={() => toggleCollapse(!isOpen)}
