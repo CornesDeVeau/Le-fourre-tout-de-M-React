@@ -24,8 +24,8 @@ export default function RootLayout({
         <div
           className={clsx(
             "grid",
-            { "grid-cols-sidebar": !isCollapsed },
-            { "grid-cols-sidebar-collapsed": isCollapsed }
+            { "md:grid-cols-sidebar": !isCollapsed },
+            { "md:grid-cols-sidebar-collapsed": isCollapsed }
           )}
         >
           <Sidebar isOpen={isCollapsed} toggleCollapse={handleCollapseButton} />
